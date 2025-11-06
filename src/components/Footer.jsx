@@ -1,4 +1,5 @@
 import { MessageCircle, Instagram, Mail } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function Footer() {
   return (
@@ -15,10 +16,10 @@ export default function Footer() {
           <div>
             <div className="font-semibold text-neutral-900 dark:text-white mb-3">Link rapidi</div>
             <ul className="space-y-2 text-neutral-600 dark:text-neutral-300">
-              <li><a href="#services" className="hover:text-[#1663FF]">Servizi</a></li>
-              <li><a href="#portfolio" className="hover:text-[#1663FF]">Portfolio</a></li>
-              <li><a href="#calculator" className="hover:text-[#1663FF]">Preventivo</a></li>
-              <li><a href="#contact" className="hover:text-[#1663FF]">Contatti</a></li>
+              <li><a href="/servizi" className="hover:text-[#1663FF]">Servizi</a></li>
+              <li><a href="/portfolio" className="hover:text-[#1663FF]">Portfolio</a></li>
+              <li><a href="/calcolatore" className="hover:text-[#1663FF]">Preventivo</a></li>
+              <li><a href="/contatti" className="hover:text-[#1663FF]">Contatti</a></li>
             </ul>
           </div>
           <div>
@@ -38,22 +39,28 @@ export default function Footer() {
         <div className="mt-10 flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400">
           <span>© {new Date().getFullYear()} SiteNova. Tutti i diritti riservati.</span>
           <div className="flex items-center gap-3">
-            <a href="#" className="hover:text-[#1663FF]">Privacy</a>
-            <a href="#" className="hover:text-[#1663FF]">Cookie</a>
+            <a href="/legal" className="hover:text-[#1663FF]">Privacy</a>
+            <a href="/legal" className="hover:text-[#1663FF]">Cookie</a>
           </div>
         </div>
       </div>
 
-      {/* Floating WhatsApp */}
-      <a
+      {/* Floating WhatsApp FAB */}
+      <motion.a
         href="https://wa.me/393000000000"
         target="_blank"
         rel="noreferrer"
-        className="fixed bottom-6 right-6 z-40 inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 ring-8 ring-[#25D366]/10 animate-bounce hover:animate-none"
+        className="fixed bottom-6 right-6 z-40 inline-flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-lg shadow-[#25D366]/30 ring-8 ring-[#25D366]/10"
         aria-label="Apri WhatsApp"
+        initial={{ scale: 1 }}
+        animate={{
+          scale: [1, 1, 1.06, 1],
+        }}
+        transition={{ duration: 0.9, repeat: Infinity, repeatDelay: 12 }}
+        whileHover={{ boxShadow: '0 0 0 0 rgba(37,211,102,0.3)', scale: 1.05 }}
       >
         <MessageCircle className="w-6 h-6" />
-      </a>
+      </motion.a>
     </footer>
   );
 }
